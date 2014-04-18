@@ -1,0 +1,5 @@
+#! /bin/bash
+
+for i in $@; do
+  rspec --color spec/hole_$i\_spec.rb
+done

@@ -1,0 +1,80 @@
+#!/usr/bin/env ruby
+
+require 'rubygems' 
+require 'bundler/setup'
+require 'rspec'
+require 'stringio'
+require 'active_support/core_ext'
+require 'colorize'
+
+def all_holes
+  (0..Dir["spec/**/*.rb"].count - 1).to_a
+end
+
+def score(i)
+ File.read("./holes/#{i}/hole_#{i}.rb").gsub(/\s/, "").each_char.count
+end
+
+def greet
+  colors = String.colors - [:black]
+  puts ("Ruby Golf " * 10).split('').map { |char| char.send(:colorize, colors.sample ) }.join()
+  puts
+end
+
+def attempt_hole(i, results, output, errors)
+  puts "Attempting Hole #{i}".colorize(:green)
+  puts "\tRunning Tests..."
+
+  if RSpec::Core::Runner.run(["spec/hole_#{i}_spec.rb"], output, errors).zero?
+    puts "\tSuccess".colorize(:green)
+    results[i] = Success.new(i, score(i))
+    true
+  else
+    results[i] = Failure.new(i)
+    puts "\tFailed".colorize(:red)
+    puts "\tRun './test i' to see errors".colorize(:red)
+    false
+  end
+
+end
+
+class Results < Hash
+  def total
+    map { |hole, result| result.score }.sum
+  end
+end
+
+class Success < Struct.new(:hole, :score)
+  def to_s
+    "Hole #{hole}: #{score}".colorize(:green)
+  end
+end
+
+class Failure < Struct.new(:hole)
+  def to_s
+    "Hole #{hole}: FAIL".colorize(:red)
+  end
+end
+
+holes   = ARGV.present? ? ARGV : all_holes
+output  = StringIO.new
+errors  = StringIO.new
+results = Results.new
+
+greet
+
+success = holes.each.to_enum.all? do |i|
+  attempt_hole(i, results, output, errors)
+end
+
+puts "\nResults".underline
+results.each do |hole, result|
+  puts result
+end
+
+if success
+  puts "\nTOTAL: #{results.total}".colorize(:green)
+else
+  puts "\nFAILED :(".colorize(:red)
+end
+
