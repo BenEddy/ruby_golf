@@ -1,5 +1,5 @@
 module HoleThree
   def self.play(string)
-    puts n
+    raise NotImplementedError
   end
 end

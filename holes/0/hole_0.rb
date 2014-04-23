@@ -1,5 +1,5 @@
 module HoleZero
   def self.play(n)
-    puts n
+    raise NotImplementedError
   end
 end

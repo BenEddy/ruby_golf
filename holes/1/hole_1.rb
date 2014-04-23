@@ -1,5 +1,5 @@
 module HoleOne
   def self.play(n)
-    puts n
+    raise NotImplementedError
   end
 end

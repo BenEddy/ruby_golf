@@ -1,5 +1,5 @@
 module HoleTwo
   def self.play(file)
-    puts n
+    raise NotImplementedError
   end
 end
