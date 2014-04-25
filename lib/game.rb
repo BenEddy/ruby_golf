@@ -1,7 +1,7 @@
 class Game
   attr_reader :hole_numbers, :output, :errors
 
-  def initialize(holes_numbers)
+  def initialize(hole_numbers)
     @hole_numbers ||= hole_numbers || all_hole_numbers
     @output = StringIO.new
     @errors = StringIO.new

@@ -12,7 +12,6 @@ require './lib/game'
 
 
 puts Greeting.new
-
 game = Game.new(ARGV)
 
 game.scored_holes.each do |hole|
