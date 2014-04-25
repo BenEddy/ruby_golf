@@ -31,6 +31,6 @@ class Game
   private
 
   def all_hole_numbers
-    (0..Dir["spec/**/*.rb"].count - 1).to_a
+    (0..Dir["spec/**/hole*.rb"].count - 1).to_a
   end
 end
