@@ -19,5 +19,4 @@ For example, when you're satisfied with hole 1, run `./play 1`.  This will run h
 
 You can also score multiple holes with `./play 1 2 3`
 
-When you're satisfied with your implementation of every hole, run `./play` to score all the holes, and then submit a pull request back to the repo.
-
+When you're satisfied with your implementation of every hole, run `./play` to score all the holes.
