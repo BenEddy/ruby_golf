@@ -30,7 +30,7 @@ We can issue queries to retrieve User records, which are returned as an array of
 schema = File.open("schema.sql")
 users = File.open("users.sql")
 
-HoleFive.play(schema: schema, users: users, query: "SELECT * from users;")
+HoleFive.play(schema: schema, data: [users], query: "SELECT * FROM users;")
 
 # => 
 [
@@ -42,7 +42,7 @@ HoleFive.play(schema: schema, users: users, query: "SELECT * from users;")
 
 We can specify a subset of attributes separated by commas: 
 ```Ruby
-HoleFive.play(schema: schema, users: users, query: "SELECT id, name from users;")
+HoleFive.play(schema: schema, data: [users], query: "SELECT id, name FROM users;")
 
 # => 
 [
@@ -54,14 +54,14 @@ HoleFive.play(schema: schema, users: users, query: "SELECT id, name from users;"
 
 And lastly, we can provide simple conditions for our selects:
 ```Ruby
-HoleFive.play(schema: schema, users: users, query: "SELECT * from users WHERE name='Kyle';")
+HoleFive.play(schema: schema, data: [users], query: "SELECT * FROM users WHERE name='Kyle';")
 
 # => 
 [
   {id: "4", name: "Kyle", birthplace: "Longmont,CO", job_title: "Developer", special_skills: "High Kicks"},
 ]
 
-HoleFive.play(schema: schema, users: users, query: "SELECT id from users WHERE name='Kyle' OR name='Cransy';")
+HoleFive.play(schema: schema, data: [users], query: "SELECT id FROM users WHERE name='Kyle' OR name='Cransy';")
 
 # => 
 [
@@ -69,7 +69,7 @@ HoleFive.play(schema: schema, users: users, query: "SELECT id from users WHERE n
   {id: "5"}
 ]
 
-HoleFive.play(schema: schema, users: users, query: "SELECT name from users WHERE job_title='Developer' AND birthplace='Seattle,WA';")
+HoleFive.play(schema: schema, data: [users], query: "SELECT name FROM users WHERE job_title='Developer' AND birthplace='Seattle,WA';")
 
 # => 
 [
