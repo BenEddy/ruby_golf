@@ -40,9 +40,9 @@ Shape
       end
     end
 
-    it "accepts a fill option" do
+    it "accepts a filled option" do
       when_implemented do
-        expect(described_class.play(width: 3, height: 3, character: "*")).to eq <<-Shape.strip
+        expect(described_class.play(width: 4, height: 4, character: "*", filled: true)).to eq <<-Shape.strip
 ****
 ****
 ****
