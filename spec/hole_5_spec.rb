@@ -51,7 +51,7 @@ describe HoleFive do
     end
 
     it "selects with multiple, ORed conditions" do
-      expect(play("SELECT * FROM cars WHERE year > 2004 OR make = 'BMW';;")).to eq [
+      expect(play("SELECT * FROM cars WHERE year > 2004 OR make = 'BMW';")).to eq [
         {id: "1", make: "Toyota",  model: "Camary",  year: "2009", price: "19000"},
         {id: "2", make: "BMW",     model: "350i",    year: "2002", price: "16000"},
         {id: "3", make: "Audi",    model: "A3",      year: "2013", price: "28000"},
