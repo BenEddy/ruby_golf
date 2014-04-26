@@ -27,7 +27,7 @@ $   $
 $$$$$
 ```
 
-Lastly, you must accept a "fill" option.  By default, the rectangle should *not* be filled.  However, when the `:filled` options is `true`, the rectangle must be filled. For example:
+Lastly, you must accept a "filled" option.  By default, the rectangle should *not* be filled.  However, when the `:filled` options is `true`, the rectangle must be filled. For example:
 
 ```Ruby
 HoleFour.play(width: 8, height: 4, filled: true)
