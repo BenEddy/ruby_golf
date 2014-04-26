@@ -11,4 +11,4 @@ HoleTwo.play(file)
 ```
 
 ## Here's the catch:
-You may not use a CSV parsing library.  You gotta role the thing yourself. 
+You may not use a CSV parsing library.  You gotta roll the thing yourself. 
