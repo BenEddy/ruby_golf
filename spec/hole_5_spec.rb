@@ -5,7 +5,7 @@ describe HoleFive do
   let(:cars)   { File.open(File.expand_path("../fixtures/cars.sql", __FILE__)) }
 
   def play(query)
-    HoleFive.play(schema: schema, data: cars, query: "SELECT * FROM cars;")
+    HoleFive.play(schema: schema, data: cars, query: query)
   end
 
 
