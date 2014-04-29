@@ -9,7 +9,7 @@ HoleOne.play(2)
 # => 1,2
 ```
 
-There's a twist though; you must replace every number divisible by 5 with "Fizz", every number divisible by 3 with "Buzz", and every number divisible by 5 and 3 with "FizzBuzz".  For example:
+There's a twist though; you must replace every number divisible by 3 with "Fizz", every number divisible by 5 with "Buzz", and every number divisible by 3 and 5 with "FizzBuzz".  For example:
 
 ```Ruby
 HoleOne.play(17)
