@@ -7,6 +7,7 @@ require 'active_support/core_ext'
 require 'colorize'
 
 require File.expand_path('../../lib/greeting', __FILE__)
+require File.expand_path('../../lib/hole_set', __FILE__)
 require File.expand_path('../../lib/hole', __FILE__)
 require File.expand_path('../../lib/game', __FILE__)
 

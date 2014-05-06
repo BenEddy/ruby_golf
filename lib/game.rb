@@ -1,4 +1,4 @@
-require File.expand_path("../hole_set")
+require File.expand_path("../hole_set", __FILE__)
 
 class Game
   attr_reader :holes, :output, :errors
