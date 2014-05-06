@@ -6,10 +6,9 @@ require 'rspec'
 require 'active_support/core_ext'
 require 'colorize'
 
-require './lib/greeting'
-require './lib/hole'
-require './lib/game'
-
+require File.expand_path('../../lib/greeting', __FILE__)
+require File.expand_path('../../lib/hole', __FILE__)
+require File.expand_path('../../lib/game', __FILE__)
 
 puts Greeting.new
 game = Game.new(ARGV)

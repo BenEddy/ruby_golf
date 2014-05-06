@@ -28,14 +28,14 @@ class Hole
     @successful ||= !pending? && specs_pass?
   end
 
+  def source
+    File.read("holes/#{number}/hole_#{number}.rb")
+  end
+
   private
 
   def specs_pass?
     @specs_pass ||= NullSpecRunner.passing?(spec)
-  end
-
-  def source
-    File.read("holes/#{number}/hole_#{number}.rb")
   end
 
   def spec

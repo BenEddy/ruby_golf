@@ -1,14 +1,10 @@
+require File.expand_path("../hole_set")
+
 class Game
-  attr_reader :hole_numbers, :output, :errors
+  attr_reader :holes, :output, :errors
 
   def initialize(hole_numbers)
-    @hole_numbers ||= hole_numbers.presence || all_hole_numbers
-    @output = StringIO.new
-    @errors = StringIO.new
-  end
-
-  def holes
-    @holes ||= hole_numbers.map { |i| Hole.new(i) }
+    @holes = HoleSet.find(hole_numbers)
   end
 
   def scored_holes
@@ -26,11 +22,5 @@ class Game
 
   def successful_holes
     holes.select(&:successful?)
-  end
-
-  private
-
-  def all_hole_numbers
-    (0..Dir["spec/**/hole*.rb"].count - 1).to_a
   end
 end

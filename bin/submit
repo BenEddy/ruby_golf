@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+require 'colorize'
+
+require File.expand_path('../../lib/version', __FILE__)
+require File.expand_path('../../lib/hole_set', __FILE__)
+require File.expand_path('../../lib/api', __FILE__)
+
+holes = HoleSet.find(ARGV)
+
+holes.each do |hole|
+  puts "Submitting Hole #{hole.number}..."
+
+  response = Api.create_submission({
+    code: hole.source,
+    hole: hole.number
+  })
+
+  case response["status"]
+  when "success"
+    puts response["message"].to_s.colorize(:green)
+  when "pending"
+    puts response["message"].to_s.colorize(:yellow)
+  else
+    puts response["message"].to_s.colorize(:red)
+  end
+
+  puts
+end
+

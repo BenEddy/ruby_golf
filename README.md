@@ -10,13 +10,13 @@ Initially, all holes will raise a `NotImplementedError`.  When a hole raises thi
 
 ### Testing
 
-As you iterate, you can test via `./test <hole_numbers>` e.g `./test 1 2`.
+As you iterate, you can test via `./bin/test <hole_numbers>` e.g `./bin/test 1 2`.
 
 ### Scoring
-To generate a score for a completed implementation, run the `./play` script.
+To generate a score for a completed implementation, run the `./bin/play` script.
 
-For example, when you're satisfied with hole 1, run `./play 1`.  This will run hole one's specs and then generate a score.
+For example, when you're satisfied with hole 1, run `./bin/play 1`.  This will run hole one's specs and then generate a score.
 
-You can also score multiple holes with `./play 1 2 3`
+You can also score multiple holes with `./bin/play 1 2 3`
 
-When you're satisfied with your implementation of every hole, run `./play` to score all the holes.
+When you're satisfied with your implementation of every hole, run `./bin/play` to score all the holes.

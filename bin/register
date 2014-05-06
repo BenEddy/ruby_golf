@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+require 'colorize'
+require 'highline/import'
+
+require File.expand_path('../../lib/greeting', __FILE__)
+require File.expand_path('../../lib/api', __FILE__)
+
+puts Greeting.new
+
+handle = ask("What would you like your handle to be?") { |q|
+  q.validate = /.+/
+  q.responses[:not_valid] = 'You have to type something...'
+  q.responses[:ask_on_error] = :question
+}
+
+puts "\nSounds good, #{handle}. Registering..."
+
+def write_identity_file(user_id)
+  FileUtils.mkdir_p("./.id")
+  File.open(".id/user_id.txt", "w+") do |file|
+    file.write user_id
+    file.close
+  end
+end
+
+begin
+  response = Api.create_user(handle: handle)
+  if response.success?
+    write_identity_file(response["uuid"])
+    puts "You are now registered!".colorize(:green)
+  else
+    puts "Registration failed:".colorize(:red)
+    puts response.join.colorize(:red)
+  end
+rescue
+  puts "Sorry. Unable to register at this time.".colorize(:red)
+end
